@@ -1,7 +1,7 @@
 buildscript {
     repositories {
         jcenter()
-        maven { url = "http://files.minecraftforge.net/maven" }
+        maven { url = "https://files.minecraftforge.net/maven" }
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
@@ -31,31 +31,26 @@ minecraft {
 repositories {
     maven {
         name = "ChickenBones maven"
-        url = "http://chickenbones.net/maven/"
+        url = "https://chickenbones.net/maven/"
     }
     maven {
         name = "tterrag maven"
-        url = "http://maven.tterrag.com/"
+        url = "https://maven.tterrag.com/"
     }
     maven {
-        name = "Progwml6 maven"
-        url = "http://dvs1.progwml6.com/files/maven/"
+        url "https://cursemaven.com"
     }
     maven {
         name = "CraftTweaker Maven"
         url = "https://maven.blamejared.com/"
     }
     maven {
-        name = "tehnut"
-        url = "http://tehnut.info/maven"
-    }
-    maven {
         name = "Forgelin Maven"
-        url = "http://maven.shadowfacts.net/"
+        url = "https://maven.shadowfacts.net/"
     }
     maven {
         name = "Forestry Maven"
-        url = "http://maven.ic2.player.to"
+        url = "https://maven.ic2.player.to"
     }
     maven {
         name = "CurseForge"
@@ -65,13 +60,13 @@ repositories {
 
 dependencies {
     deobfCompile "codechicken:ChickenASM:${short_version}-${chickenasm_version}"
-    deobfCompile "codechicken:CodeChickenLib:${minecraft_version}-${ccl_version}:deobf"
-    deobfCompile "codechicken:ForgeMultipart:${minecraft_version}-${multipart_version}:deobf"
+    deobfCompile "curse.maven:CodeChickenLib-242818:2540352"
+    deobfCompile "curse.maven:ForgeMultipart-258426:2560761"
     deobfCompile "CraftTweaker2:CraftTweaker2-MC${stripped_version}-Main:${crafttweaker_version}"
-    deobfCompile "exnihilocreatio:exnihilocreatio:${minecraft_version}-${exnihilo_version}"
-    deobfCompile "mezz.jei:jei_${minecraft_version}:${jei_version}"
-    deobfCompile "net.sengir.forestry:forestry_${minecraft_version}:${forestry_version}"
-    deobfCompile "binnie:binnie-mods-${minecraft_version}:${binnie_version}"
+    deobfCompile "curse.maven:exnihilocreatio-274456:2674718"
+    deobfCompile "curse.maven:jei-238222:2564320"
+    deobfCompile "curse.maven:forestry-59751:2636586"
+    deobfCompile "curse.maven:binnie_mods-223525:2636899"
     compile files("libs/gregtech-${minecraft_version}-${gt_version}.jar")
     compile files("libs/GregicAdditions-${minecraft_version}-${ga_version}.jar")
     compile files("libs/BetterQuesting-${bq_version}.jar")
