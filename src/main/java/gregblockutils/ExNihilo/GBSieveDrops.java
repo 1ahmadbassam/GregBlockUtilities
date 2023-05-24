@@ -7,11 +7,10 @@ import exnihilocreatio.util.ItemInfo;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.ore.OrePrefix;
 import net.minecraft.item.ItemStack;
-import org.jetbrains.annotations.NotNull;
 
 public class GBSieveDrops implements ISieveDefaultRegistryProvider {
     @Override
-    public void registerRecipeDefaults(@NotNull SieveRegistry registry) {
+    public void registerRecipeDefaults(SieveRegistry registry) {
         for (SieveDrops recipe : SieveDrops.drops) {
             String type = recipe.input.equals("sand") ? "oreSandyChunk" : recipe.input.equals("nether") ? "oreNetherChunk" : recipe.input.equals("end") ? "oreEnderChunk" : "oreChunk";
             ItemStack stack = OreDictUnifier.get(OrePrefix.valueOf(type), recipe.material);
