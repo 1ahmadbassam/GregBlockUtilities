@@ -213,7 +213,7 @@ public enum GBCraftingComponents {
                 case 7:
                     return new UnificationEntry(OrePrefix.plate, Materials.HSSE);
                 default:
-                    return new UnificationEntry(OrePrefix.plate, GAMaterials.NEUTRONIUM);
+                    return new UnificationEntry(OrePrefix.plate, GAMaterials.Neutronium);
 
             }
         }

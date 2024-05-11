@@ -54,8 +54,8 @@ public class SteamRockBreaker extends MetaTileEntity {
             ItemStack output;
             int largestSignal = 0;
             for (EnumFacing face : EnumFacing.VALUES)
-                if (getWorld().getRedstonePower(getPos(), face) > largestSignal)
-                    largestSignal = getWorld().getRedstonePower(getPos(), face);
+                if (GTUtility.getRedstonePower(getWorld(), getPos(), face) > largestSignal)
+                    largestSignal = GTUtility.getRedstonePower(getWorld(), getPos(), face);
             switch (largestSignal) {
                 case 4:
                 case 5:

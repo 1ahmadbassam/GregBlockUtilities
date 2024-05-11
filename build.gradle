@@ -54,10 +54,6 @@ repositories {
         url = "http://maven.shadowfacts.net/"
     }
     maven {
-        name = "Forestry Maven"
-        url = "http://maven.ic2.player.to"
-    }
-    maven {
         name = "CoFH Maven"
         url = "http://maven.covers1624.net"
     }
@@ -66,8 +62,8 @@ repositories {
         url = "http://maven.amadornes.com/"
     }
     maven {
-        name = "tesla"
-        url 'https://maven.mcmoddev.com/'
+        name = "CurseMaven"
+        url = "https://cursemaven.com"
     }
 }
 
@@ -76,13 +72,15 @@ dependencies {
     deobfCompile "codechicken:CodeChickenLib:${minecraft_version}-${ccl_version}:deobf"
     deobfCompile "codechicken:ForgeMultipart:${minecraft_version}-${multipart_version}:deobf"
     deobfCompile "CraftTweaker2:CraftTweaker2-MC${stripped_version}-Main:${crafttweaker_version}"
-    deobfCompile "exnihilocreatio:exnihilocreatio:${minecraft_version}-${exnihilo_version}"
+    deobfCompile "curse.maven:ex-nihilo-creatio-274456:2817545"
     deobfCompile "mezz.jei:jei_${minecraft_version}:${jei_version}"
-    deobfCompile "net.sengir.forestry:forestry_${minecraft_version}:${forestry_version}"
-    deobfCompile "binnie:binnie-mods-${minecraft_version}:${binnie_version}"
+    deobfCompile "curse.maven:forestry-59751:2918418"
+    deobfCompile "curse.maven:jei-bees-248370:2490059"
+    deobfCompile "curse.maven:hwyla-253449:2568753"
     compile files("libs/gregtech-${minecraft_version}-${gt_version}.jar")
-    compile files("libs/Shadows_of_Greg-${minecraft_version}-${shadow_version}.jar")
+    compile files("libs/GregicAdditions-${minecraft_version}-${ga_version}.jar")
     compile files("libs/BetterQuesting-${bq_version}.jar")
+    compile files("libs/binnie-mods-${minecraft_version}-${binnie_version}")
 }
 
 processResources {

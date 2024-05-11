@@ -1,6 +1,7 @@
 package gregblockutils.Recipes;
 
 import binnie.extrabees.genetics.ExtraBeeDefinition;
+import exnihilocreatio.ModItems;
 import exnihilocreatio.compatibility.jei.sieve.SieveRecipe;
 import exnihilocreatio.registries.manager.ExNihiloRegistryManager;
 import exnihilocreatio.registries.types.Siftable;
@@ -8,6 +9,8 @@ import forestry.api.apiculture.BeeManager;
 import forestry.api.apiculture.EnumBeeType;
 import forestry.apiculture.genetics.BeeDefinition;
 import forestry.core.fluids.Fluids;
+import gregblockutils.GregBlockUtils;
+import gregblockutils.Items.GBItems;
 import gregblockutils.Items.GBPebble;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.Recipe;
@@ -27,25 +30,79 @@ import gregtech.common.blocks.StoneBlock;
 import gregtech.common.items.MetaItems;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemMultiTexture;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 import net.minecraftforge.oredict.OreDictionary;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class GBRecipeAddition {
     public static void postInit() {
+        List<ItemStack> dirtItems = OreDictionary.getOres("dirt", true);
+        dirtItems.removeIf(cur -> cur.getMetadata() == OreDictionary.WILDCARD_VALUE);
+
+        Set<String> dirtUnlocNames = new HashSet<>();
+        for (ItemStack dirt : dirtItems) {
+            dirtUnlocNames.add(dirt.getUnlocalizedName());
+        }
+        Map<String, ArrayList<Integer>> registeredRecipes = new HashMap<>();
         for (SieveRecipe recipe : ExNihiloRegistryManager.SIEVE_REGISTRY.getRecipeList()) {
-            for (ItemStack stack : recipe.getSievables()) {
+            ItemStack stack = recipe.getSievables().get(0);
+            if (dirtUnlocNames.contains(stack.getUnlocalizedName())) continue;
+            if (registeredRecipes.containsKey(stack.getUnlocalizedName()) && registeredRecipes.get(stack.getUnlocalizedName()).contains(recipe.getMesh().getMetadata())) continue;
+            SimpleRecipeBuilder builder = GBRecipeMaps.SIEVE_RECIPES.recipeBuilder();
+            builder.notConsumable(recipe.getMesh()).inputs(stack);
+            for (Siftable siftable : ExNihiloRegistryManager.SIEVE_REGISTRY.getDrops(stack)) {
+                if (siftable.getMeshLevel() == recipe.getMesh().getMetadata() && siftable.getDrop() != null)
+                    builder.chancedOutput(siftable.getDrop().getItemStack(), (int) (siftable.getChance() * (float) Recipe.getMaxChancedValue()), 1000);
+            }
+            builder.duration(100).EUt(4);
+            builder.buildAndRegister();
+            if (!registeredRecipes.containsKey(stack.getUnlocalizedName())) registeredRecipes.put(stack.getUnlocalizedName(), new ArrayList<>());
+            registeredRecipes.get(stack.getUnlocalizedName()).add(recipe.getMesh().getMetadata());
+        }
+        List<Siftable> dirtSiftables = ExNihiloRegistryManager.SIEVE_REGISTRY.getDrops(new ItemStack(Blocks.DIRT, 1, 0));
+        dirtSiftables.removeIf(cur -> cur.getDrop() != null && cur.getDrop().getItemStack().getUnlocalizedName().contains("pebble"));
+        for (ItemStack dirtItem : dirtItems) {
+            SimpleRecipeBuilder builder = GBRecipeMaps.SIEVE_RECIPES.recipeBuilder();
+            builder.notConsumable(new ItemStack(ModItems.mesh, 1, 1)).inputs(dirtItem);
+            for (Siftable siftable : dirtSiftables)
+                if (siftable.getDrop() != null)
+                    builder.chancedOutput(siftable.getDrop().getItemStack(), (int) (siftable.getChance() * (float) Recipe.getMaxChancedValue()), 1000);
+            builder.duration(100).EUt(4);
+            builder.buildAndRegister();
+        }
+        {
+            for(ItemStack compressedDirt : OreDictionary.getOres("compressed1xDirt")) {
                 SimpleRecipeBuilder builder = GBRecipeMaps.SIEVE_RECIPES.recipeBuilder();
-                builder.notConsumable(recipe.getMesh()).inputs(stack);
-                for (Siftable siftable : ExNihiloRegistryManager.SIEVE_REGISTRY.getDrops(stack)) {
-                    if (siftable.getMeshLevel() == recipe.getMesh().getMetadata())
-                        builder.chancedOutput(siftable.getDrop().getItemStack(), (int) (siftable.getChance() * (float) Recipe.getMaxChancedValue()), 1000);
+                builder.notConsumable(new ItemStack(ModItems.mesh, 1, 1)).inputs(compressedDirt);
+                for (int i = 0; i < 4; i++) {
+                    builder.chancedOutput(new ItemStack(ModItems.pebbles, 6, i), (int) (0.35 * (float) Recipe.getMaxChancedValue()), 1000);
+                }
+                builder.duration(100).EUt(4);
+                builder.buildAndRegister();
+                builder = GBRecipeMaps.SIEVE_RECIPES.recipeBuilder();
+                builder.notConsumable(new ItemStack(ModItems.mesh, 1, 2)).inputs(compressedDirt);
+                for (int i = 0; i < 4; i++) {
+                    builder.chancedOutput(new ItemStack(GBItems.pebble, 2, i), (int) (0.3 * (float) Recipe.getMaxChancedValue()), 1000);
                 }
                 builder.duration(100).EUt(4);
                 builder.buildAndRegister();
             }
+        }
+        {
+            SimpleRecipeBuilder builder = GBRecipeMaps.SIEVE_RECIPES.recipeBuilder();
+            builder.notConsumable(new ItemStack(ModItems.mesh, 1, 1)).inputs(new ItemStack(Blocks.DIRT, 1, 1));
+            builder.chancedOutput(new ItemStack(Blocks.DIRT, 2, 0), (int) (0.6 * (float) Recipe.getMaxChancedValue()), 1000);
+            builder.chancedOutput(new ItemStack(Blocks.GRAVEL, 1, 0), (int) (0.4 * (float) Recipe.getMaxChancedValue()), 1000);
+            builder.duration(100).EUt(4);
+            builder.buildAndRegister();
         }
 
         ModHandler.addShapedRecipe("pebbles_to_basalt", MetaBlocks.MINERAL.getItemVariant(BlockMineral.MineralVariant.BASALT, StoneBlock.ChiselingVariant.CRACKED), "PP", "PP", 'P', GBPebble.getPebbleStack("basalt"));
