@@ -1,4 +1,4 @@
-package gregblockutils.Recipes;
+package gregblockutils.recipes;
 
 import gregtech.api.capability.impl.FluidTankList;
 import gregtech.api.gui.GuiTextures;
@@ -10,16 +10,18 @@ import gregtech.api.recipes.RecipeMap;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraftforge.items.IItemHandlerModifiable;
 
+import javax.annotation.Nonnull;
 import java.util.function.DoubleSupplier;
 
-public class RecipeMapExtended<R extends RecipeBuilder<R>> extends RecipeMap {
+public class RecipeMapExtended<R extends RecipeBuilder<R>> extends RecipeMap<R> {
     private TextureArea progressBarTexture;
     private ProgressWidget.MoveType moveType;
 
-    public RecipeMapExtended(String unlocalizedName, int minInputs, int maxInputs, int minOutputs, int maxOutputs, int minFluidInputs, int maxFluidInputs, int minFluidOutputs, int maxFluidOutputs, int amperage, R defaultRecipe) {
+    public RecipeMapExtended(String unlocalizedName, int minInputs, int maxInputs, int minOutputs, int maxOutputs, int minFluidInputs, int maxFluidInputs, int minFluidOutputs, int maxFluidOutputs, R defaultRecipe) {
         super(unlocalizedName, minInputs, maxInputs, minOutputs, maxOutputs, minFluidInputs, maxFluidInputs, minFluidOutputs, maxFluidOutputs, defaultRecipe);
     }
 
+    @Nonnull
     public RecipeMap<R> setProgressBar(TextureArea progressBar, ProgressWidget.MoveType moveType) {
         this.progressBarTexture = progressBar;
         this.moveType = moveType;
@@ -27,8 +29,9 @@ public class RecipeMapExtended<R extends RecipeBuilder<R>> extends RecipeMap {
         return this;
     }
 
+    @Nonnull
     public ModularUI.Builder createUITemplate(DoubleSupplier progressSupplier, IItemHandlerModifiable importItems, IItemHandlerModifiable exportItems, FluidTankList importFluids, FluidTankList exportFluids) {
-        ModularUI.Builder builder = new ModularUI.Builder(GuiTextures.BACKGROUND_EXTENDED, 176, 216) {
+        ModularUI.Builder builder = new ModularUI.Builder(GuiTextures.BACKGROUND, 176, 216) {
             public ModularUI.Builder bindPlayerInventory(InventoryPlayer inventoryPlayer) {
                 this.bindPlayerInventory(inventoryPlayer, 134);
                 return this;
@@ -66,13 +69,13 @@ public class RecipeMapExtended<R extends RecipeBuilder<R>> extends RecipeMap {
             if (itemSlotsToDown >= fluidInputsCount) {
                 int startSpecX = isOutputs ? startInputsX + itemSlotsToLeft * 18 : startInputsX - 18;
                 for (int i = 0; i < fluidInputsCount; i++) {
-                    addSlot(builder, startSpecX, startInputsY + 18 * i, i, itemHandler, fluidHandler, !invertFluids, isOutputs);
+                    addSlot(builder, startSpecX, startInputsY + 18 * i, i, itemHandler, fluidHandler, true, isOutputs);
                 }
             } else {
                 int startSpecY = startInputsY + itemSlotsToDown * 18;
                 int offsetX = isOutputs ? 0 : 18;
                 for (int i = 0; i < fluidInputsCount; i++) {
-                    addSlot(builder, startInputsX - offsetX + 18 * i, startSpecY, i, itemHandler, fluidHandler, !invertFluids, isOutputs);
+                    addSlot(builder, startInputsX - offsetX + 18 * i, startSpecY, i, itemHandler, fluidHandler, true, isOutputs);
                 }
             }
         }

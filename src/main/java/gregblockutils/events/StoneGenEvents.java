@@ -1,4 +1,4 @@
-package gregblockutils.Events;
+package gregblockutils.events;
 
 import net.minecraft.block.BlockStone;
 import net.minecraft.block.material.Material;
@@ -12,6 +12,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 @Mod.EventBusSubscriber
 public class StoneGenEvents {
+    @SuppressWarnings("deprecation")
     @SubscribeEvent(priority = EventPriority.HIGH)
     public void stoneGen(BlockEvent.FluidPlaceBlockEvent event) {
         if (event.getOriginalState().getBlock() == Blocks.FLOWING_LAVA) {

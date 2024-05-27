@@ -1,4 +1,4 @@
-package gregblockutils.Machines;
+package gregblockutils.machines;
 
 import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.ColourMultiplier;
@@ -78,11 +78,11 @@ public class SteamRockBreaker extends MetaTileEntity {
                 default:
                     output = new ItemStack(Blocks.COBBLESTONE);
             }
-            if (checkSides(Blocks.LAVA) && checkSides(Blocks.WATER) && getTimer() % 32 == 0 && steamFluidTank.getFluidAmount() >= STEAM_DRAIN_PER_CYCLE * 4) {
+            if (checkSides(Blocks.LAVA) && checkSides(Blocks.WATER) && getOffsetTimer() % 32 == 0 && steamFluidTank.getFluidAmount() >= STEAM_DRAIN_PER_CYCLE * 4) {
                 exportItems.insertItem(0, output, false);
                 steamFluidTank.drain(STEAM_DRAIN_PER_CYCLE, true);
             }
-            if (getTimer() % 5 == 0) {
+            if (getOffsetTimer() % 5 == 0) {
                 pushItemsIntoNearbyHandlers(frontFacing);
             }
         }
@@ -115,7 +115,7 @@ public class SteamRockBreaker extends MetaTileEntity {
     @Override
     @SideOnly(Side.CLIENT)
     public void renderMetaTileEntity(CCRenderState renderState, Matrix4 translation, IVertexOperation[] pipeline) {
-        IVertexOperation[] colouredPipeline = (IVertexOperation[]) ArrayUtils.add(pipeline, new ColourMultiplier(GTUtility.convertRGBtoOpaqueRGBA_CL(this.getPaintingColorForRendering())));
+        IVertexOperation[] colouredPipeline = ArrayUtils.add(pipeline, new ColourMultiplier(GTUtility.convertRGBtoOpaqueRGBA_CL(this.getPaintingColorForRendering())));
         Textures.STEAM_CASING_BRONZE.render(renderState, translation, colouredPipeline);
         GBTextures.BREAKER_OVERLAY.render(renderState, translation, pipeline, getFrontFacing(), false);
         Textures.PIPE_OUT_OVERLAY.renderSided(frontFacing, renderState, translation, pipeline);

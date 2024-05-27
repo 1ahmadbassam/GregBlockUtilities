@@ -1,4 +1,4 @@
-package gregblockutils.Items;
+package gregblockutils.items;
 
 import com.google.common.collect.Lists;
 import exnihilocreatio.ExNihiloCreatio;
@@ -23,6 +23,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class GBPebble extends Item implements IHasModel {
     private static final List<String> names = Lists.newArrayList("basalt", "black_granite", "marble", "red_granite");
@@ -56,14 +57,14 @@ public class GBPebble extends Item implements IHasModel {
     @Override
     @SideOnly(Side.CLIENT)
     public void getSubItems(@Nullable CreativeTabs tab, @Nonnull NonNullList<ItemStack> list) {
-        if (this.isInCreativeTab(tab))
+        if (tab != null && this.isInCreativeTab(tab))
             for (int i = 0; i < names.size(); i++) {
                 list.add(new ItemStack(this, 1, i));
             }
     }
 
     /**
-     * Called when the equipped item is right clicked.
+     * Called when the equipped item is right-clicked.
      */
     @Override
     @Nonnull
@@ -100,7 +101,7 @@ public class GBPebble extends Item implements IHasModel {
     public void initModel(ModelRegistryEvent e) {
         List<ModelResourceLocation> locations = new ArrayList<>();
         for (String name : names) {
-            locations.add(new ModelResourceLocation(getRegistryName(), "type=" + name));
+            locations.add(new ModelResourceLocation(Objects.requireNonNull(getRegistryName()), "type=" + name));
         }
 
         ModelBakery.registerItemVariants(this, locations.toArray(new ModelResourceLocation[0]));

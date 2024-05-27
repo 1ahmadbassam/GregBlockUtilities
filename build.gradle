@@ -1,7 +1,6 @@
 buildscript {
     repositories {
-        jcenter()
-        maven { url = "http://files.minecraftforge.net/maven" }
+        maven { url = "https://files.minecraftforge.net/maven" }
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
@@ -24,46 +23,42 @@ minecraft {
     runDir = "run"
     mappings = "snapshot_20170928"
 
-    replace("@VERSION@",project.version)
+    replace("@VERSION@", project.version)
     replaceIn("GregBlockUtils.java")
 }
 
 repositories {
     maven {
         name = "ChickenBones maven"
-        url = "http://chickenbones.net/maven/"
+        url = "https://chickenbones.net/maven/"
     }
     maven {
         name = "tterrag maven"
-        url = "http://maven.tterrag.com/"
+        url = "https://maven.tterrag.com/"
     }
     maven {
         name = "Progwml6 maven"
-        url = "http://dvs1.progwml6.com/files/maven/"
+        url = "https://dvs1.progwml6.com/files/maven/"
     }
-    maven { //JEI fallback
+    maven {
         name = "ModMaven"
-        url = "http://modmaven.k-4u.nl"
+        url = "https://modmaven.k-4u.nl"
     }
     maven {
         name = "CraftTweaker Maven"
         url = "https://maven.blamejared.com/"
     }
     maven {
-        name = "Forgelin Maven"
-        url = "http://maven.shadowfacts.net/"
-    }
-    maven {
         name = "CoFH Maven"
-        url = "http://maven.covers1624.net"
-    }
-    maven {
-        name = "amadornes"
-        url = "http://maven.amadornes.com/"
+        url = "https://maven.covers1624.net"
     }
     maven {
         name = "CurseMaven"
         url = "https://cursemaven.com"
+    }
+    maven {
+        name = "CurseForge"
+        url = "https://minecraft.curseforge.com/api/maven/"
     }
 }
 
@@ -73,14 +68,12 @@ dependencies {
     deobfCompile "codechicken:ForgeMultipart:${minecraft_version}-${multipart_version}:deobf"
     deobfCompile "CraftTweaker2:CraftTweaker2-MC${stripped_version}-Main:${crafttweaker_version}"
     deobfCompile "curse.maven:ex-nihilo-creatio-274456:2817545"
-    deobfCompile "mezz.jei:jei_${minecraft_version}:${jei_version}"
     deobfCompile "curse.maven:forestry-59751:2918418"
-    deobfCompile "curse.maven:jei-bees-248370:2490059"
+    deobfCompile "curse.maven:binnie-mods-899182:4741099"
+    deobfCompile "mezz.jei:jei_${minecraft_version}:${jei_version}"
     deobfCompile "curse.maven:hwyla-253449:2568753"
-    compile files("libs/gregtech-${minecraft_version}-${gt_version}.jar")
-    compile files("libs/GregicAdditions-${minecraft_version}-${ga_version}.jar")
-    compile files("libs/BetterQuesting-${bq_version}.jar")
-    compile files("libs/binnie-mods-${minecraft_version}-${binnie_version}")
+    deobfCompile "gregtechce:gregtech:${minecraft_version}:${gt_version}"
+    deobfCompile "gregicadditions-unofficial:GregicAdditionsUnofficial:${minecraft_version}:${ga_version}"
 }
 
 processResources {
@@ -89,10 +82,10 @@ processResources {
 
     from(sourceSets.main.resources.srcDirs) {
         include 'mcmod.info'
-                
-        expand 'version':project.version, 'mcversion':project.minecraft.version
+
+        expand 'version': project.version, 'mcversion': project.minecraft.version
     }
-        
+
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
     }

@@ -1,8 +1,8 @@
-package gregblockutils.Recipes;
+package gregblockutils.recipes;
 
 import exnihilocreatio.ModBlocks;
 import forestry.core.ModuleCore;
-import gregblockutils.Machines.GBTileEntities;
+import gregblockutils.machines.GBTileEntities;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.unification.material.Materials;
@@ -15,7 +15,7 @@ import net.minecraft.item.ItemStack;
 
 import java.util.Arrays;
 
-import static gregblockutils.Recipes.GBCraftingComponents.*;
+import static gregblockutils.recipes.GBCraftingComponents.*;
 
 
 public class GBMachineRecipes {

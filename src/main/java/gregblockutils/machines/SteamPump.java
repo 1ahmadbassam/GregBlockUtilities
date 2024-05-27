@@ -1,4 +1,4 @@
-package gregblockutils.Machines;
+package gregblockutils.machines;
 
 import codechicken.lib.colour.ColourRGBA;
 import codechicken.lib.render.CCRenderState;
@@ -58,8 +58,8 @@ public class SteamPump extends MetaTileEntity {
     private static final int PUMP_SPEED_BASE = 120;
     private static final int STEAM_DRAIN_PER_CYCLE = 1000;
 
-    private Deque<BlockPos> fluidSourceBlocks = new ArrayDeque<>();
-    private Deque<BlockPos> blocksToCheck = new ArrayDeque<>();
+    private final Deque<BlockPos> fluidSourceBlocks = new ArrayDeque<>();
+    private final Deque<BlockPos> blocksToCheck = new ArrayDeque<>();
     private boolean initializedQueue = false;
     private int pumpHeadY;
     protected FluidTank steamFluidTank;
@@ -180,6 +180,7 @@ public class SteamPump extends MetaTileEntity {
                 pos.getY() + pumpHeadY >= checkPos.getY();
     }
 
+    @SuppressWarnings("deprecation")
     private void updateQueueState() {
         BlockPos selfPos = getPos().down(pumpHeadY);
         BlockPos checkPos = null;
@@ -199,7 +200,7 @@ public class SteamPump extends MetaTileEntity {
         }
 
         if (fluidSourceBlocks.isEmpty()) {
-            if (getTimer() % 20 == 0) {
+            if (getOffsetTimer() % 20 == 0) {
                 BlockPos downPos = selfPos.down(1);
                 if (downPos.getY() >= 0) {
                     IBlockState downBlock = getWorld().getBlockState(downPos);
@@ -217,7 +218,7 @@ public class SteamPump extends MetaTileEntity {
                 this.initializedQueue = false;
             }
 
-            if (!initializedQueue || getTimer() % 6000 == 0) {
+            if (!initializedQueue || getOffsetTimer() % 6000 == 0) {
                 this.initializedQueue = true;
                 //just add ourselves to check list and see how this will go
                 this.blocksToCheck.add(selfPos);
@@ -232,7 +233,9 @@ public class SteamPump extends MetaTileEntity {
         if (blockHere.getBlock() instanceof BlockLiquid ||
                 blockHere.getBlock() instanceof IFluidBlock) {
             IFluidHandler fluidHandler = FluidUtil.getFluidHandler(getWorld(), checkPos, null);
-            FluidStack drainStack = fluidHandler.drain(Integer.MAX_VALUE, false);
+            FluidStack drainStack = null;
+            if (fluidHandler != null)
+                drainStack = fluidHandler.drain(Integer.MAX_VALUE, false);
             if (drainStack != null && drainStack.amount > 0) {
                 this.fluidSourceBlocks.add(checkPos);
             }
@@ -259,7 +262,9 @@ public class SteamPump extends MetaTileEntity {
         if (blockHere.getBlock() instanceof BlockLiquid ||
                 blockHere.getBlock() instanceof IFluidBlock) {
             IFluidHandler fluidHandler = FluidUtil.getFluidHandler(getWorld(), fluidBlockPos, null);
-            FluidStack drainStack = fluidHandler.drain(Integer.MAX_VALUE, false);
+            FluidStack drainStack = null;
+            if (fluidHandler != null)
+                drainStack = fluidHandler.drain(Integer.MAX_VALUE, false);
             if (drainStack != null && exportFluids.fill(drainStack, false) == drainStack.amount) {
                 exportFluids.fill(drainStack, true);
                 fluidHandler.drain(drainStack.amount, true);
@@ -281,7 +286,7 @@ public class SteamPump extends MetaTileEntity {
         pushFluidsIntoNearbyHandlers(getFrontFacing());
         fillContainerFromInternalTank(importItems, exportItems, 0, 0);
         updateQueueState();
-        if (getTimer() % getPumpingCycleLength() == 0 && !fluidSourceBlocks.isEmpty() &&
+        if (getOffsetTimer() % getPumpingCycleLength() == 0 && !fluidSourceBlocks.isEmpty() &&
                 steamFluidTank.getFluidAmount() >= STEAM_DRAIN_PER_CYCLE) {
             tryPumpFirstBlock();
         }

@@ -2,13 +2,12 @@
 {
   "modid": "gregblockutils",
   "name": "GregBlockUtils",
-  "description": " An addon for GregTech Community Edition and Ex Nihilo, specifically made for the pack GregBlock.",
+  "description": "An addon for GregTech Community Edition and Ex Nihilo, specifically made for the pack GregBlock.",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
-  "authorList": ["TheEmosewaPixel","Bartz24"],
-  "credits": "The creators of GTCE most importantly, GregoriusT.",
+  "authorList": ["TheEmosewaPixel","Bartz24", "1ahmadbassam"],
   "logoFile": "",
   "screenshots": [],
   "dependencies": ["gtadditions"]

@@ -1,19 +1,18 @@
-package gregblockutils.ExNihilo;
+package gregblockutils.exnihilo;
 
 import exnihilocreatio.ModBlocks;
-import exnihilocreatio.blocks.BlockSieve;
 import exnihilocreatio.registries.manager.ISieveDefaultRegistryProvider;
 import exnihilocreatio.registries.registries.SieveRegistry;
-import exnihilocreatio.util.BlockInfo;
 import exnihilocreatio.util.ItemInfo;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.ore.OrePrefix;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+
+import javax.annotation.Nonnull;
 
 public class GBSieveDrops implements ISieveDefaultRegistryProvider {
     @Override
-    public void registerRecipeDefaults(SieveRegistry registry) {
+    public void registerRecipeDefaults(@Nonnull SieveRegistry registry) {
         for (SieveDrops recipe : SieveDrops.drops) {
             String type = recipe.input.equals("sand") ? "oreSandyChunk" : recipe.input.equals("nether") ? "oreNetherChunk" : recipe.input.equals("end") ? "oreEnderChunk" : "oreChunk";
             ItemStack stack = OreDictUnifier.get(OrePrefix.valueOf(type), recipe.material);

@@ -1,9 +1,3 @@
-item.material.oreprefix.oreChunk=%s Ore Chunk
-item.material.oreprefix.oreNetherChunk=%s Ore Chunk
-item.material.oreprefix.oreEnderChunk=%s Ore Chunk
-item.material.oreprefix.oreFineChunk=Fine %s Ore Chunk
-item.material.oreprefix.oreChunk=Powdered %s Ore
-
 recipemap.electric_sieve.name=Electric Sieve Recipes
 recipemap.attractor.name=Bee Attractor Recipes
 
@@ -30,6 +24,7 @@ gregblockutils.machine.sieve.steam.name=Steam Sieve
 
 gregblockutils.machine.rock_breaker.steam.name=Steam Rock Breaker
 
+item.material.oreprefix.oreFineChunk=Fine %s Ore Chunk
 item.material.oreprefix.oreChunk=%s Ore Chunk
 item.material.oreprefix.oreEnderChunk=Ender %s Ore Chunk
 item.material.oreprefix.oreNetherChunk=Nether %s Ore Chunk

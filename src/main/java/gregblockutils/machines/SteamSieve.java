@@ -1,6 +1,6 @@
-package gregblockutils.Machines;
+package gregblockutils.machines;
 
-import gregblockutils.Recipes.GBRecipeMaps;
+import gregblockutils.recipes.GBRecipeMaps;
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.ModularUI;
 import gregtech.api.gui.widgets.ImageWidget;

@@ -1,16 +1,16 @@
 package gregblockutils;
 
 import exnihilocreatio.registries.manager.ExNihiloRegistryManager;
-import gregblockutils.Events.StoneGenEvents;
-import gregblockutils.ExNihilo.GBSieveDrops;
-import gregblockutils.Items.GBEnums;
-import gregblockutils.Items.GBItems;
-import gregblockutils.Items.GBMetaItems;
-import gregblockutils.ExNihilo.SieveDrops;
-import gregblockutils.Machines.GBTextures;
-import gregblockutils.Machines.GBTileEntities;
-import gregblockutils.Recipes.GBMachineRecipes;
-import gregblockutils.Recipes.GBRecipeAddition;
+import gregblockutils.events.StoneGenEvents;
+import gregblockutils.exnihilo.GBSieveDrops;
+import gregblockutils.exnihilo.SieveDrops;
+import gregblockutils.items.GBEnums;
+import gregblockutils.items.GBItems;
+import gregblockutils.items.GBMetaItems;
+import gregblockutils.machines.GBTextures;
+import gregblockutils.machines.GBTileEntities;
+import gregblockutils.recipes.GBMachineRecipes;
+import gregblockutils.recipes.GBRecipeAddition;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -32,12 +32,11 @@ public class GregBlockUtils {
 
     @SidedProxy(
             modId = MODID,
-            clientSide = "gregblockutils.ClientProxy",
             serverSide = "gregblockutils.CommonProxy"
     )
     public static CommonProxy proxy;
 
-    private static Logger logger;
+    public static Logger logger;
 
     public GregBlockUtils() {
         GBEnums.preInit();
@@ -46,6 +45,8 @@ public class GregBlockUtils {
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
+        logger = event.getModLog();
+
         GBMetaItems.preInit();
         new GBItems();
         SieveDrops.addSieveRecipe();
@@ -61,7 +62,6 @@ public class GregBlockUtils {
 
     @EventHandler
     public void postInit(FMLPostInitializationEvent event) {
-        proxy.postInit();
         GBRecipeAddition.postInit();
     }
 }

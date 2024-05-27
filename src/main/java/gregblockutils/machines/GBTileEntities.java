@@ -1,15 +1,15 @@
-package gregblockutils.Machines;
+package gregblockutils.machines;
 
 import gregblockutils.GregBlockUtils;
-import gregblockutils.Recipes.GBRecipeMaps;
+import gregblockutils.recipes.GBRecipeMaps;
 import gregtech.api.GregTechAPI;
 import gregtech.api.metatileentity.SimpleMachineMetaTileEntity;
 import gregtech.api.render.Textures;
 import net.minecraft.util.ResourceLocation;
 
 public class GBTileEntities {
-    public static SimpleMachineMetaTileEntity[] ELECTRIC_SIEVE = new SimpleMachineMetaTileEntity[8];
-    public static SimpleMachineMetaTileEntity[] BEE_ATTRACTOR = new SimpleMachineMetaTileEntity[8];
+    public static final SimpleMachineMetaTileEntity[] ELECTRIC_SIEVE = new SimpleMachineMetaTileEntity[8];
+    public static final SimpleMachineMetaTileEntity[] BEE_ATTRACTOR = new SimpleMachineMetaTileEntity[8];
 
     public static SteamPump STEAM_PUMP;
     public static SteamSieve STEAM_SIEVE;

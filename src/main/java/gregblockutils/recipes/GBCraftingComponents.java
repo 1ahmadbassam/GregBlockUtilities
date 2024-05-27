@@ -1,4 +1,4 @@
-package gregblockutils.Recipes;
+package gregblockutils.recipes;
 
 import gregicadditions.GAMaterials;
 import gregicadditions.item.GAMetaBlocks;
@@ -296,7 +296,6 @@ public enum GBCraftingComponents {
             switch (tier) {
                 case 0:
                 case 1:
-                    return new UnificationEntry(OrePrefix.gem, Materials.Diamond);
                 case 2:
                     return new UnificationEntry(OrePrefix.gem, Materials.Diamond);
                 default:
@@ -444,7 +443,6 @@ public enum GBCraftingComponents {
                 case 3:
                     return new UnificationEntry(OrePrefix.wireGtQuadruple, Materials.Copper);
                 case 4:
-                    return new UnificationEntry(OrePrefix.wireGtOctal, Materials.AnnealedCopper);
                 case 5:
                     return new UnificationEntry(OrePrefix.wireGtOctal, Materials.AnnealedCopper);
                 case 6:

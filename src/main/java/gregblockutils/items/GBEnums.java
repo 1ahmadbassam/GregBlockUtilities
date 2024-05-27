@@ -1,4 +1,4 @@
-package gregblockutils.Items;
+package gregblockutils.items;
 
 import gregtech.api.unification.material.MaterialIconType;
 import gregtech.api.unification.material.type.DustMaterial;
@@ -49,6 +49,6 @@ public class GBEnums {
     }
 
     private static Predicate<Material> pred(Predicate<Material> in) {
-        return (mat) -> in.test(mat);
+        return in;
     }
 }

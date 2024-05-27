@@ -1,4 +1,4 @@
-package gregblockutils.ExNihilo;
+package gregblockutils.exnihilo;
 
 import exnihilocreatio.registries.manager.ExNihiloRegistryManager;
 import gregtech.api.unification.material.Materials;
@@ -7,10 +7,10 @@ import gregtech.api.unification.material.type.Material;
 import java.util.ArrayList;
 
 public class SieveDrops {
-    public String input;
-    public Material material;
-    public float chance;
-    public int level;
+    public final String input;
+    public final Material material;
+    public final float chance;
+    public final int level;
 
     public SieveDrops(String input, Material material, float chance, int level) {
         this.input = input;
@@ -19,7 +19,7 @@ public class SieveDrops {
         this.level = level;
     }
 
-    protected static ArrayList<SieveDrops> drops = new ArrayList<>();
+    protected static final ArrayList<SieveDrops> drops = new ArrayList<>();
 
 
     public static void addSieveRecipe() {

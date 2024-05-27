@@ -1,4 +1,4 @@
-package gregblockutils.Items;
+package gregblockutils.items;
 
 import gregtech.api.items.materialitem.MaterialMetaItem;
 import gregtech.api.unification.OreDictUnifier;
@@ -8,7 +8,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class ChunkMetaItem extends MaterialMetaItem {
 
@@ -25,10 +24,7 @@ public class ChunkMetaItem extends MaterialMetaItem {
 
         ArrayList<Short> generatedItems = ObfuscationReflectionHelper.getPrivateValue(MaterialMetaItem.class, this, "generatedItems");
 
-        Iterator var1 = generatedItems.iterator();
-
-        while (var1.hasNext()) {
-            short metaItem = (Short) var1.next();
+        for (short metaItem : generatedItems) {
             OrePrefix prefix = this.orePrefixes[metaItem / 1000];
             Material material = Material.MATERIAL_REGISTRY.getObjectById(metaItem % 1000);
 
