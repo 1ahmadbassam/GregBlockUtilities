@@ -5,6 +5,7 @@ import gregblockutils.recipes.GBRecipeMaps;
 import gregtech.api.GregTechAPI;
 import gregtech.api.metatileentity.SimpleMachineMetaTileEntity;
 import gregtech.api.render.Textures;
+import gregtech.common.metatileentities.MetaTileEntities;
 import net.minecraft.util.ResourceLocation;
 
 public class GBTileEntities {
@@ -12,12 +13,14 @@ public class GBTileEntities {
     public static final SimpleMachineMetaTileEntity[] BEE_ATTRACTOR = new SimpleMachineMetaTileEntity[8];
 
     public static SteamPump STEAM_PUMP;
-    public static SteamSieve STEAM_SIEVE;
+    public static SteamSieve STEAM_SIEVE_BRONZE;
+    public static SteamSieve STEAM_SIEVE_STEEL;
 
     public static SteamRockBreaker STEAM_BREAKER;
 
     public static void init() {
-        STEAM_SIEVE = GregTechAPI.registerMetaTileEntity(2749, new SteamSieve(location("sieve.steam"), false));
+        STEAM_SIEVE_BRONZE = GregTechAPI.registerMetaTileEntity(2749, new SteamSieve(location("sieve.steam.bronze"), false));
+        STEAM_SIEVE_STEEL = GregTechAPI.registerMetaTileEntity(2768, new SteamSieve(location("sieve.steam.steel"), true));
 
         ELECTRIC_SIEVE[0] = GregTechAPI.registerMetaTileEntity(2750, new SimpleMachineMetaTileEntity(location("sieve.lv"), GBRecipeMaps.SIEVE_RECIPES, Textures.SIFTER_OVERLAY, 1));
         ELECTRIC_SIEVE[1] = GregTechAPI.registerMetaTileEntity(2751, new SimpleMachineMetaTileEntity(location("sieve.mv"), GBRecipeMaps.SIEVE_RECIPES, Textures.SIFTER_OVERLAY, 2));

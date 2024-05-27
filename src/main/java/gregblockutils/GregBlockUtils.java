@@ -8,6 +8,7 @@ import gregblockutils.items.GBMetaItems;
 import gregblockutils.machines.GBTextures;
 import gregblockutils.machines.GBTileEntities;
 import gregblockutils.recipes.GBMachineRecipes;
+import gregblockutils.recipes.GBOreDict;
 import gregblockutils.recipes.GBRecipeAddition;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
@@ -47,6 +48,7 @@ public class GregBlockUtils {
         GBTileEntities.init();
         GBMachineRecipes.init();
         MinecraftForge.EVENT_BUS.register(new StoneGenEvents());
+        GBOreDict.init();
         SieveDrops.addSieveRecipe();
         SieveDrops.registerSieveRecipes();
         GBRecipeAddition.init();
