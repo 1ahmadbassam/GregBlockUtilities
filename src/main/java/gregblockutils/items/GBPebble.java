@@ -41,19 +41,12 @@ public class GBPebble extends Item implements IHasModel {
         return new ItemStack(GBItems.pebble, 1, names.indexOf(name));
     }
 
-    /**
-     * Returns the unlocalized name of this item. This version accepts an ItemStack so different stacks can have
-     * different names based on their damage or NBT.
-     */
     @Override
     @Nonnull
     public String getUnlocalizedName(ItemStack stack) {
         return getUnlocalizedName() + "." + names.get(stack.getItemDamage());
     }
 
-    /**
-     * returns a list of items with the same ID, but different meta (eg: dye returns 16 items)
-     */
     @Override
     @SideOnly(Side.CLIENT)
     public void getSubItems(@Nullable CreativeTabs tab, @Nonnull NonNullList<ItemStack> list) {
@@ -63,9 +56,6 @@ public class GBPebble extends Item implements IHasModel {
             }
     }
 
-    /**
-     * Called when the equipped item is right-clicked.
-     */
     @Override
     @Nonnull
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, @Nonnull EnumHand hand) {
@@ -87,15 +77,6 @@ public class GBPebble extends Item implements IHasModel {
         return new ActionResult<>(EnumActionResult.SUCCESS, stack);
     }
 
-    public String getPebbleType(ItemStack stack) {
-        if (stack.getMetadata() >= names.size() || stack.getMetadata() < 0) {
-            return names.get(0);
-        } else {
-            return names.get(stack.getMetadata());
-        }
-    }
-
-
     @Override
     @SideOnly(Side.CLIENT)
     public void initModel(ModelRegistryEvent e) {
@@ -106,6 +87,5 @@ public class GBPebble extends Item implements IHasModel {
 
         ModelBakery.registerItemVariants(this, locations.toArray(new ModelResourceLocation[0]));
         ModelLoader.setCustomMeshDefinition(this, stack -> locations.get(stack.getMetadata()));
-
     }
 }

@@ -14,7 +14,6 @@ public class GBEnums {
         EnumHelper.addEnum(MaterialIconType.class, "oreEnderChunk", new Class[0]);
         EnumHelper.addEnum(MaterialIconType.class, "oreNetherChunk", new Class[0]);
         EnumHelper.addEnum(MaterialIconType.class, "oreSandyChunk", new Class[0]);
-        EnumHelper.addEnum(MaterialIconType.class, "plateDouble", new Class[0]);
 
         EnumHelper.addEnum(OrePrefix.class, "oreChunk",
                 new Class[]{String.class, long.class, Material.class, MaterialIconType.class, long.class, Predicate.class},
@@ -39,13 +38,6 @@ public class GBEnums {
                 "Sandy Ore Chunk", -1L, null, MaterialIconType.valueOf("oreSandyChunk"), OrePrefix.Flags.ENABLE_UNIFICATION | OrePrefix.Flags.DISALLOW_RECYCLING,
                 pred((mat) ->
                         mat instanceof DustMaterial && mat.hasFlag(DustMaterial.MatFlags.GENERATE_ORE)));
-
-        EnumHelper.addEnum(OrePrefix.class, "plateDouble",
-                new Class[]{String.class, long.class, Material.class, MaterialIconType.class, long.class, Predicate.class},
-                "Double Plate", -1L, null, MaterialIconType.valueOf("plateDouble"), OrePrefix.Flags.ENABLE_UNIFICATION | OrePrefix.Flags.DISALLOW_RECYCLING,
-                pred((mat) ->
-                        mat instanceof DustMaterial && mat.hasFlag(DustMaterial.MatFlags.GENERATE_ORE)));
-
     }
 
     private static Predicate<Material> pred(Predicate<Material> in) {

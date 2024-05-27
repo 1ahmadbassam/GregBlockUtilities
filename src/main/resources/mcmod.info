@@ -10,6 +10,6 @@
   "authorList": ["TheEmosewaPixel","Bartz24", "1ahmadbassam"],
   "logoFile": "",
   "screenshots": [],
-  "dependencies": ["gtadditions"]
+  "dependencies": ["gtadditions","gtconstruct","exnihilocreatio"]
 }
 ]

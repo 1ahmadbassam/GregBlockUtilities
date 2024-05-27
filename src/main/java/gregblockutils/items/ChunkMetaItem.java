@@ -40,6 +40,5 @@ public class ChunkMetaItem extends MaterialMetaItem {
             if (prefix == OrePrefix.valueOf("oreSandyChunk"))
                 OreDictUnifier.registerOre(new ItemStack(this, 1, metaItem), "oreSand" + (material == null ? "" : material.toCamelCaseString()));
         }
-
     }
 }

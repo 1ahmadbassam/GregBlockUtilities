@@ -74,6 +74,7 @@ dependencies {
     deobfCompile "curse.maven:hwyla-253449:2568753"
     deobfCompile "gregtechce:gregtech:${minecraft_version}:${gt_version}"
     deobfCompile "gregicadditions-unofficial:GregicAdditionsUnofficial:${minecraft_version}:${ga_version}"
+    deobfCompile "gregs-construct-unofficial:GregsConstructUnofficial:${minecraft_version}:${gc_version}"
 }
 
 processResources {
