@@ -1,0 +1,51 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "builtin/generated",
+    "transform": "forge:default-item"
+  },
+  "variants": {
+    "type": {
+      "stone": {
+        "textures": {
+          "layer0": "exnihilocreatio:items/item_pebble"
+        }
+      },
+      "granite": {
+        "textures": {
+          "layer0": "exnihilocreatio:items/item_pebble_granite"
+        }
+      },
+      "diorite": {
+        "textures": {
+          "layer0": "exnihilocreatio:items/item_pebble_diorite"
+        }
+      },
+      "andesite": {
+        "textures": {
+          "layer0": "exnihilocreatio:items/item_pebble_andesite"
+        }
+      },
+      "basalt": {
+        "textures": {
+          "layer0": "exnihilocreatio:items/item_pebble_basalt"
+        }
+      },
+      "black_granite": {
+        "textures": {
+          "layer0": "exnihilocreatio:items/item_pebble_black_granite"
+        }
+      },
+      "marble": {
+        "textures": {
+          "layer0": "exnihilocreatio:items/item_pebble_marble"
+        }
+      },
+      "red_granite": {
+        "textures": {
+          "layer0": "exnihilocreatio:items/item_pebble_red_granite"
+        }
+      }
+    }
+  }
+}

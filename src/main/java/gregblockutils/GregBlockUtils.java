@@ -1,9 +1,10 @@
 package gregblockutils;
 
 import gregblockutils.events.StoneGenEvents;
+import gregblockutils.exnihilo.ExCompressumIntegration;
+import gregblockutils.exnihilo.ExNihiloIntegration;
 import gregblockutils.exnihilo.SieveDrops;
 import gregblockutils.items.GBEnums;
-import gregblockutils.items.GBItems;
 import gregblockutils.items.GBMetaItems;
 import gregblockutils.machines.GBTextures;
 import gregblockutils.machines.GBTileEntities;
@@ -40,7 +41,6 @@ public class GregBlockUtils {
         logger = event.getModLog();
 
         GBMetaItems.preInit();
-        new GBItems();
     }
 
     @EventHandler
@@ -52,10 +52,13 @@ public class GregBlockUtils {
         SieveDrops.addSieveRecipe();
         SieveDrops.registerSieveRecipes();
         GBRecipeAddition.init();
+        ExNihiloIntegration.init();
+        ExCompressumIntegration.init();
     }
 
     @EventHandler
     public void postInit(FMLPostInitializationEvent event) {
         GBRecipeAddition.postInit();
+        ExNihiloIntegration.postInit();
     }
 }

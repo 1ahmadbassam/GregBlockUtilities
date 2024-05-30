@@ -1,0 +1,13 @@
+item.crook_clay_uncooked.name=Clay Crook
+item.crook_clay.name=Brick Crook
+item.crook_basalt.name=Basalt Crook
+item.crook_black_granite.name=Black Granite Crook
+item.crook_marble.name=Marble Crook
+item.crook_red_granite.name=Red Granite Crook
+
+item.item_pebble.basalt.name=Basalt Pebble
+item.item_pebble.black_granite.name=Black Granite Pebble
+item.item_pebble.marble.name=Marble Pebble
+item.item_pebble.red_granite.name=Red Granite Pebble
+
+tile.witchwater.name=Witchwater

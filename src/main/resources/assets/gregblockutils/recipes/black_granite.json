@@ -1,0 +1,17 @@
+{
+  "result": {
+    "item": "gregtech:granite",
+    "data": 4
+  },
+  "pattern": [
+    "xx",
+    "xx"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "x": {
+      "item": "exnihilocreatio:item_pebble",
+      "data": 5
+    }
+  }
+}
