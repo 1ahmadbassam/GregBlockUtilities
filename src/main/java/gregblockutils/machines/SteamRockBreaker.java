@@ -6,14 +6,15 @@ import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
 import gregtech.api.capability.impl.FilteredFluidHandler;
 import gregtech.api.capability.impl.FluidTankList;
+import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.ModularUI;
+import gregtech.api.gui.widgets.SlotWidget;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.render.SimpleSidedCubeRenderer;
 import gregtech.api.render.Textures;
 import gregtech.api.util.GTUtility;
-import gregtech.api.util.XSTR;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.entity.player.EntityPlayer;
@@ -36,10 +37,10 @@ public class SteamRockBreaker extends MetaTileEntity {
 
     private static final int STEAM_DRAIN_PER_CYCLE = 50;
     private FluidTank steamFluidTank;
-    private static final XSTR random = new XSTR();
 
     public SteamRockBreaker(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId);
+        this.initializeInventory();
     }
 
     @Override
@@ -137,11 +138,11 @@ public class SteamRockBreaker extends MetaTileEntity {
 
     @Override
     protected ModularUI createUI(EntityPlayer entityPlayer) {
-        return null;
-    }
+        ModularUI.Builder builder = ModularUI.builder(GuiTextures.BRONZE_BACKGROUND, 176, 130).label(10, 5, this.getMetaFullName());
 
-    @Override
-    protected boolean openGUIOnRightClick() {
-        return false;
+        builder.widget((new SlotWidget(this.exportItems, 0, 89, 18, true, false)).setBackgroundTexture(GuiTextures.BRONZE_SLOT));
+
+        builder.bindPlayerInventory(entityPlayer.inventory, GuiTextures.BRONZE_SLOT, 7, 48);
+        return builder.build(this.getHolder(), entityPlayer);
     }
 }
