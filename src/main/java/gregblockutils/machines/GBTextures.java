@@ -20,4 +20,7 @@ public class GBTextures {
         BREAKER_OVERLAY = new OrientedOverlayRenderer("machines/rock_breaker", OverlayFace.BACK);
         BEE_ATTRACTOR = new OrientedOverlayRenderer("machines/attractor", OverlayFace.FRONT, OverlayFace.SIDE);
     }
+
+    public static void preInit() {
+    }
 }

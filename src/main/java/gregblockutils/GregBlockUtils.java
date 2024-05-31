@@ -33,7 +33,7 @@ public class GregBlockUtils {
 
     public GregBlockUtils() {
         GBEnums.preInit();
-        new GBTextures();
+        GBTextures.preInit();
     }
 
     @EventHandler

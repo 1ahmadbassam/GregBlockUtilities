@@ -1,6 +1,7 @@
 package gregblockutils.recipes;
 
 import binnie.extrabees.genetics.ExtraBeeDefinition;
+import exnihilocreatio.ModBlocks;
 import forestry.api.apiculture.BeeManager;
 import forestry.api.apiculture.EnumBeeType;
 import forestry.apiculture.genetics.BeeDefinition;
@@ -28,6 +29,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -43,10 +45,11 @@ public class GBRecipeAddition {
         ModHandler.removeRecipes(new ItemStack(Blocks.STONEBRICK, 1, BlockStoneBrick.MOSSY_META));
         RecipeMaps.MIXER_RECIPES.recipeBuilder().EUt(4).duration(12).inputs(new ItemStack(Blocks.STONEBRICK, 1, BlockStoneBrick.DEFAULT_META)).fluidInputs(Materials.Water.getFluid(144)).outputs(new ItemStack(Blocks.STONEBRICK, 1, BlockStoneBrick.MOSSY_META)).buildAndRegister();
 
-        RecipeMaps.THERMAL_CENTRIFUGE_RECIPES.recipeBuilder().EUt(16).duration(280).input(OrePrefix.dust, Materials.Blaze, 4).chancedOutput(OreDictUnifier.get(OrePrefix.stick, Materials.Blaze, 1), (int) (0.7387 * Recipe.getMaxChancedValue()),500).output(OrePrefix.dustTiny, Materials.DarkAsh, 2).chancedOutput(OreDictUnifier.get(OrePrefix.dustTiny, Materials.Blaze, 2), (int) (0.0343 * Recipe.getMaxChancedValue()),50).buildAndRegister();
+        RecipeMaps.THERMAL_CENTRIFUGE_RECIPES.recipeBuilder().EUt(16).duration(280).input(OrePrefix.dust, Materials.Blaze, 4).chancedOutput(OreDictUnifier.get(OrePrefix.stick, Materials.Blaze, 1), (int) (0.7387 * Recipe.getMaxChancedValue()), 500).output(OrePrefix.dustTiny, Materials.DarkAsh, 2).chancedOutput(OreDictUnifier.get(OrePrefix.dustTiny, Materials.Blaze, 2), (int) (0.0343 * Recipe.getMaxChancedValue()), 50).buildAndRegister();
     }
 
     public static void postInit() {
+        RecipeMaps.FORGE_HAMMER_RECIPES.removeRecipe(RecipeMaps.FORGE_HAMMER_RECIPES.findRecipe(Integer.MAX_VALUE, Collections.singletonList(new ItemStack(ModBlocks.crushedGranite)), Collections.emptyList(), Integer.MAX_VALUE));
         //Bees
         List<ItemStack> allFlowers = OreDictionary.getOres("flower").stream()
                 .flatMap(stack -> ModHandler.getAllSubItems(stack).stream())
