@@ -1,0 +1,33 @@
+{
+  "result": {
+    "item": "gregtech:meta_item_1",
+    "data": 8357
+  },
+  "type": "forge:ore_shapeless",
+  "ingredients": [
+    {
+      "item": "excompressum:uncompressed_coke"
+    },
+    {
+      "item": "excompressum:uncompressed_coke"
+    },
+    {
+      "item": "excompressum:uncompressed_coke"
+    },
+    {
+      "item": "excompressum:uncompressed_coke"
+    },
+    {
+      "item": "excompressum:uncompressed_coke"
+    },
+    {
+      "item": "excompressum:uncompressed_coke"
+    },
+    {
+      "item": "excompressum:uncompressed_coke"
+    },
+    {
+      "item": "excompressum:uncompressed_coke"
+    }
+  ]
+}

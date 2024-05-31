@@ -1,0 +1,33 @@
+{
+  "result": {
+    "item": "gregtech:meta_item_1",
+    "data": 8211
+  },
+  "type": "forge:ore_shapeless",
+  "ingredients": [
+    {
+      "item": "excompressum:uncompressed_lignite_coal"
+    },
+    {
+      "item": "excompressum:uncompressed_lignite_coal"
+    },
+    {
+      "item": "excompressum:uncompressed_lignite_coal"
+    },
+    {
+      "item": "excompressum:uncompressed_lignite_coal"
+    },
+    {
+      "item": "excompressum:uncompressed_lignite_coal"
+    },
+    {
+      "item": "excompressum:uncompressed_lignite_coal"
+    },
+    {
+      "item": "excompressum:uncompressed_lignite_coal"
+    },
+    {
+      "item": "excompressum:uncompressed_lignite_coal"
+    }
+  ]
+}

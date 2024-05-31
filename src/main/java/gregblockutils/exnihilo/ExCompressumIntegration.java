@@ -1,11 +1,14 @@
 package gregblockutils.exnihilo;
 
 import gregblockutils.GBUtil;
+import gregicadditions.recipes.CokeOvenRecipeBuilder;
+import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.recipes.CountableIngredient;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
+import gregtech.api.recipes.recipes.CokeOvenRecipe;
 import gregtech.api.unification.material.Materials;
 import net.blay09.mods.excompressum.block.BlockBait;
 import net.blay09.mods.excompressum.block.ModBlocks;
@@ -15,6 +18,7 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Tuple;
+import net.minecraftforge.fml.common.Mod;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -69,5 +73,12 @@ public class ExCompressumIntegration {
         }
         for (ResourceLocation l : removedRecipes)
             ModHandler.removeRecipeByName(l);
+        removedRecipes.clear();
+
+        CokeOvenRecipeBuilder.start().duration(240).input(new ItemStack(ModItems.uncompressedCoal)).output(new ItemStack(ExNihiloItemRegistry.uncompressedCoke)).fluidOutput(Materials.Creosote.getFluid(62)).buildAndRegister();
+        CokeOvenRecipeBuilder.start().duration(240).input(new ItemStack(ExNihiloItemRegistry.uncompressedLigniteCoal)).output(new ItemStack(ExNihiloItemRegistry.uncompressedLigniteCoke)).fluidOutput(Materials.Creosote.getFluid(62)).buildAndRegister();
+
+        RecipeMaps.PYROLYSE_RECIPES.recipeBuilder().EUt(32).duration(30).input(ModItems.uncompressedCoal, 16).circuitMeta(0).output(ExNihiloItemRegistry.uncompressedCoke, 20).fluidOutputs(Materials.Creosote.getFluid(1250)).buildAndRegister();
+        RecipeMaps.PYROLYSE_RECIPES.recipeBuilder().EUt(32).duration(30).input(ExNihiloItemRegistry.uncompressedLigniteCoal, 16).circuitMeta(0).output(ExNihiloItemRegistry.uncompressedLigniteCoke, 20).fluidOutputs(Materials.Creosote.getFluid(1250)).buildAndRegister();
     }
 }
