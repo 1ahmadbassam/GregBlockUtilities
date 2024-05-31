@@ -2,7 +2,6 @@ package gregblockutils.machines;
 
 import exnihilocreatio.ModFluids;
 import gregtech.api.util.GTUtility;
-import gregtech.api.util.XSTR;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 

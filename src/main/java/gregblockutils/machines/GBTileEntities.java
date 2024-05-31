@@ -5,7 +5,6 @@ import gregblockutils.recipes.GBRecipeMaps;
 import gregtech.api.GregTechAPI;
 import gregtech.api.metatileentity.SimpleMachineMetaTileEntity;
 import gregtech.api.render.Textures;
-import gregtech.common.metatileentities.MetaTileEntities;
 import net.minecraft.util.ResourceLocation;
 
 public class GBTileEntities {

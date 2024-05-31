@@ -2,13 +2,11 @@ package gregblockutils.exnihilo;
 
 import gregblockutils.GBUtil;
 import gregicadditions.recipes.CokeOvenRecipeBuilder;
-import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.recipes.CountableIngredient;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
-import gregtech.api.recipes.recipes.CokeOvenRecipe;
 import gregtech.api.unification.material.Materials;
 import net.blay09.mods.excompressum.block.BlockBait;
 import net.blay09.mods.excompressum.block.ModBlocks;
@@ -18,7 +16,6 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Tuple;
-import net.minecraftforge.fml.common.Mod;
 
 import java.util.ArrayList;
 import java.util.List;

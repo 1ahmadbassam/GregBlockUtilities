@@ -10,7 +10,6 @@ import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.blocks.BlockMachineCasing;
 import gregtech.common.blocks.MetaBlocks;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 
 import java.util.Arrays;
